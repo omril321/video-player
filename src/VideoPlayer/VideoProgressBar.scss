@@ -1,6 +1,8 @@
+@import "../colors";
+
 $progressBarHeight: 6px;
-$progressBarColor: #00fece;
-$progressBarContainerColor: #d7eae7;
+$progressBarColor: $redColor;
+$progressBarContainerColor: $lightGray;
 
 .video-progress-bar {
   display: flex;

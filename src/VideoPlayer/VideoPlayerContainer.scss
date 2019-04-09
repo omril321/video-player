@@ -1,17 +1,52 @@
+@import "../colors.scss";
+
 .video-player-container {
-  position: relative;
   display: flex;
   flex-direction: column;
   margin-top: 26px;
 }
 
 .video {
+  display: flex;
+}
 
+.video-player-container__overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.video-playback-button__image {
+  width: 20px;
+  height: 20px;
+  fill: $lightGray;
 }
 
 .video-playback-button {
   position: absolute;
-  left:0;
+  left: 0;
   bottom: 25px;
   z-index: 10;
+  background-color: $darkGray;
+  border: 0;
+  padding: 8px 20px;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all 150ms;
+  outline: none;
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px;
+  transform: translateX(-80%); //This might be annoying if navigating without a mouse, but this way we hide less content of the video
+}
+
+.video-player-container__overlay:hover {
+  /*
+    I wanted to add "&:focus" to improve keyboard controls.
+    However, this over-complicates hiding the button after a mouse-button click, since the overlay will remain visible
+  */
+
+  .video-playback-button {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

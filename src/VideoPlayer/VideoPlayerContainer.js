@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './VideoPlayerContainer.scss';
-import VideoPlaybackButton from "./VideoPlaybackButton";
+import VideoPlaybackButton from "./VideoPlaybackButton/VideoPlaybackButton";
 import Video from "./Video";
 import VideoProgressBar from "./VideoProgressBar";
 
@@ -27,8 +27,11 @@ class VideoPlayerContainer extends Component {
     render() {
         return (
             <div className="video-player-container">
-                <VideoPlaybackButton isVideoPlaying={this.state.isVideoPlaying} onToggleClick={this.onPlaybackToggle}/>
-                <Video isVideoPlaying={this.state.isVideoPlaying} onVideoPlaybackUpdate={this.onVideoPlaybackUpdate}/>
+                {/*Clicking anywhere on the overlay (playback button included) will trigger playback*/}
+                <div className="video-player-container__overlay" onClick={this.onPlaybackToggle}>
+                    <VideoPlaybackButton isVideoPlaying={this.state.isVideoPlaying}/>
+                    <Video isVideoPlaying={this.state.isVideoPlaying} onVideoPlaybackUpdate={this.onVideoPlaybackUpdate}/>
+                </div>
                 <VideoProgressBar currentTime={this.state.currentTime} duration={this.state.duration}/>
             </div>
         );
