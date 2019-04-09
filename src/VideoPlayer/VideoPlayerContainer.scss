@@ -1,0 +1,17 @@
+.video-player-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 26px;
+}
+
+.video {
+
+}
+
+.video-playback-button {
+  position: absolute;
+  left:0;
+  bottom: 25px;
+  z-index: 10;
+}

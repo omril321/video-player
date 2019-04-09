@@ -6,7 +6,7 @@ class VideoPlaybackButton extends Component {
     render() {
         const isVideoPlaying = this.props.isVideoPlaying;
         return (
-            <button onClick={this.props.onToggleClick}>now playing? {"" + isVideoPlaying}</button>
+            <button className="video-playback-button" onClick={this.props.onToggleClick}>now playing? {"" + isVideoPlaying}</button>
         )
     }
 }

@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import VideoPlayer from "./VideoPlayer/VideoPlayer";
+import VideoPlayerContainer from "./VideoPlayer/VideoPlayerContainer";
 
 class App extends Component {
-  render() {
-    return (
-      <VideoPlayer/>
-    );
-  }
+    render() {
+        return (
+            <div className="app-container">
+                <VideoPlayerContainer/>
+            </div>
+        );
+    }
 }
 
 export default App;
