@@ -2,7 +2,7 @@
 
 $videoOverlayElementsOffsetBottom: 25px;
 $videoOverlayElementBorderRadius: 6px;
-$videoOverlayElementHeight: 50px;
+$videoOverlayElementHeight: 44px;
 
 .video-player-container {
   display: flex;
@@ -43,7 +43,8 @@ $videoOverlayElementHeight: 50px;
   @extend .video-overlay-element;
   left: 0;
   border: 0;
-  padding: 8px 20px;
+  padding-right: 20px;
+  padding-left: 20px;
   cursor: pointer;
   border-bottom-right-radius: $videoOverlayElementBorderRadius;
   border-top-right-radius: $videoOverlayElementBorderRadius;
@@ -58,11 +59,11 @@ $videoOverlayElementHeight: 50px;
   right: 0;
   color: $lightGray;
   font-size: 1rem;
-  padding: 8px 20px;
+  padding-left: 20px;
   border-bottom-left-radius: $videoOverlayElementBorderRadius;
   border-top-left-radius: $videoOverlayElementBorderRadius;
-  width: 10em;
-  transform: translateX(90%); //This might be annoying if navigating without a mouse, but this way we hide less content of the video
+  width: 9rem; //supporting video lengths which are greater than an hour requires additional work
+  transform: translateX(90%);
 }
 
 .video-player-container__overlay:hover {
