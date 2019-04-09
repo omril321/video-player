@@ -1,31 +1,29 @@
 import React, {Component} from 'react';
 import './VideoPlayer.scss';
+import VideoPlaybackButton from "./VideoPlaybackButton";
+import Video from "./Video";
+
+const USE_VIDEO_AUTOPLAY = true;
 
 class VideoPlayer extends Component {
 
     constructor(props) {
         super(props);
-        this.videoElementRef = React.createRef();
+        this.state = {
+            isVideoPlaying: USE_VIDEO_AUTOPLAY,
+        }
     }
 
-    onPlayClick = () => {
-        this.videoElementRef.current.play();
-    }
 
-    onPauseClick = () => {
-        this.videoElementRef.current.pause();
-    }
+    onPlaybackToggle = () => {
+        this.setState((state) => ({isVideoPlaying: !state.isVideoPlaying}));
+    };
 
     render() {
         return (
             <div>
-                <button onClick={this.onPlayClick}>PLAY</button>
-                <button onClick={this.onPauseClick}>STOP</button>
-                <video ref={this.videoElementRef} autoPlay>
-                    <source src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" type="video/mp4"/>
-                    <source src="http://clips.vorwaerts-gmbh.de/VfE.webm" type="video/webm"/>
-                    <source src="http://clips.vorwaerts-gmbh.de/VfE.ogv" type="video/ogg"/>
-                </video>
+                <VideoPlaybackButton isVideoPlaying={this.state.isVideoPlaying} onToggleClick={this.onPlaybackToggle}/>
+                <Video isVideoPlaying={this.state.isVideoPlaying} />
             </div>
         );
     }
