@@ -1,5 +1,9 @@
 @import "../colors.scss";
 
+$videoOverlayElementsOffsetBottom: 25px;
+$videoOverlayElementBorderRadius: 6px;
+$videoOverlayElementHeight: 50px;
+
 .video-player-container {
   display: flex;
   flex-direction: column;
@@ -22,21 +26,43 @@
   fill: $lightGray;
 }
 
-.video-playback-button {
+
+.video-overlay-element {
   position: absolute;
-  left: 0;
-  bottom: 25px;
+  bottom: $videoOverlayElementsOffsetBottom;
   z-index: 10;
   background-color: $darkGray;
+  opacity: 0.4;
+  outline: none;
+  transition: all 150ms;
+  height: $videoOverlayElementHeight;
+  box-sizing: border-box; //to achieve the same height for all elements regardless of padding
+}
+
+.video-playback-button {
+  @extend .video-overlay-element;
+  left: 0;
   border: 0;
   padding: 8px 20px;
-  opacity: 0.4;
   cursor: pointer;
-  transition: all 150ms;
-  outline: none;
-  border-bottom-right-radius: 6px;
-  border-top-right-radius: 6px;
+  border-bottom-right-radius: $videoOverlayElementBorderRadius;
+  border-top-right-radius: $videoOverlayElementBorderRadius;
   transform: translateX(-80%); //This might be annoying if navigating without a mouse, but this way we hide less content of the video
+}
+
+.video-duration-indicator {
+  @extend .video-overlay-element;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  right: 0;
+  color: $lightGray;
+  font-size: 1rem;
+  padding: 8px 20px;
+  border-bottom-left-radius: $videoOverlayElementBorderRadius;
+  border-top-left-radius: $videoOverlayElementBorderRadius;
+  width: 10em;
+  transform: translateX(90%); //This might be annoying if navigating without a mouse, but this way we hide less content of the video
 }
 
 .video-player-container__overlay:hover {
@@ -45,8 +71,15 @@
     However, this over-complicates hiding the button after a mouse-button click, since the overlay will remain visible
   */
 
-  .video-playback-button {
+  .video-overlay-element {
     opacity: 1;
+  }
+
+  .video-playback-button {
+    transform: translateX(0);
+  }
+
+  .video-duration-indicator {
     transform: translateX(0);
   }
 }
