@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import "./VideoProgressBar.scss";
 
 class VideoProgressBar extends Component {
 

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import './VideoPlayerContainer.scss';
-import VideoPlaybackButton from "./VideoPlaybackButton/VideoPlaybackButton";
 import Video from "./Video";
-import VideoProgressBar from "./VideoProgressBar";
-import VideoDurationIndicator from "./VideoDurationIndicator/VideoDurationIndicator";
+import VideoOverlay from "./VideoOverlay/VideoOverlay";
 
 const USE_VIDEO_AUTOPLAY = true;
 
@@ -32,34 +30,19 @@ class VideoPlayerContainer extends Component {
         this.setState({isVideoLoaded: true, duration: duration});
     };
 
-    getOverlayElements = () => {
-        //TODO: this should probably be extracted
-        if (!this.state.isVideoLoaded) {
-            return (<div>Loading...</div>);
-        }
-        return (
-            <>
-                <VideoPlaybackButton isVideoPlaying={this.state.isVideoPlaying}/>
-                <VideoDurationIndicator currentTime={this.state.currentTime} duration={this.state.duration}/>
-            </>)
-    };
-
-    getProgressBar = () => {
-        return this.state.isVideoLoaded &&
-            <VideoProgressBar currentTime={this.state.currentTime} duration={this.state.duration}/>
-    };
-
     render() {
-        const {duration, isVideoPlaying, currentTime} = {...this.state};
+        const {duration, isVideoPlaying, currentTime, isVideoLoaded} = {...this.state};
         return (
             <div className="video-player-container">
-                {/*Clicking anywhere on the overlay (playback button included) will trigger playback*/}
-                <div className="video-player-container__overlay" onClick={this.onPlaybackToggle}>
-                    {this.getOverlayElements()}
-                    <Video isVideoPlaying={isVideoPlaying} onVideoPlaybackUpdate={this.onVideoPlaybackUpdate}
-                           onVideoLoaded={this.onVideoLoaded}/>
-                </div>
-                {this.getProgressBar()}
+                <Video isVideoPlaying={isVideoPlaying}
+                       onVideoPlaybackUpdate={this.onVideoPlaybackUpdate}
+                       onVideoLoaded={this.onVideoLoaded}/>
+
+                <VideoOverlay isVideoPlaying={isVideoPlaying}
+                              isVideoLoaded={isVideoLoaded}
+                              currentTime={currentTime}
+                              duration={duration}
+                              onPlaybackToggle={this.onPlaybackToggle}/>
             </div>
         );
     }

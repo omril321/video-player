@@ -1,0 +1,109 @@
+@import "../../colors";
+
+$progressBarHeightMinimized: 2px;
+$progressBarHeightFull: 8px;
+$progressBarColor: $redColor;
+$progressBarBackgroundColor: $lightGray;
+
+$videoOverlaySlidingElementsOffsetBottom: 25px;
+$videoOverlaySlidingElementBorderRadius: 6px;
+$videoOverlaySlidingElementHeight: 44px;
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+
+.video-playback-button__image {
+  width: 20px;
+  height: 20px;
+  fill: $lightGray;
+}
+
+
+.video-overlay__element {
+  position: absolute;
+  opacity: 0.4;
+  transition: all 150ms;
+}
+
+@mixin videoOverlaySlidingElement {
+  @extend .video-overlay__element;
+  z-index: 10;
+  background-color: $darkGray;
+  outline: none;
+  height: $videoOverlaySlidingElementHeight;
+  box-sizing: border-box; //to achieve the same height for all elements regardless of padding
+  bottom: $videoOverlaySlidingElementsOffsetBottom;
+
+  //it would have been nice making the button and the duration indicator "peeking" with the exact size (right now percentages are used, which is less accurate, and ugly)
+}
+
+
+.video-playback-button {
+  @include videoOverlaySlidingElement;
+  left: 0;
+  border: 0;
+  padding-right: 20px;
+  padding-left: 20px;
+  cursor: pointer;
+  border-bottom-right-radius: $videoOverlaySlidingElementBorderRadius;
+  border-top-right-radius: $videoOverlaySlidingElementBorderRadius;
+  transform: translateX(-80%); //This might be annoying if navigating without a mouse, but this way we hide less content of the video
+}
+
+.video-duration-indicator {
+  @include videoOverlaySlidingElement;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  right: 0;
+  color: $lightGray;
+  font-size: 1rem;
+  padding-left: 20px;
+  border-bottom-left-radius: $videoOverlaySlidingElementBorderRadius;
+  border-top-left-radius: $videoOverlaySlidingElementBorderRadius;
+  width: 9rem; //supporting video lengths which are greater than an hour requires additional work
+  transform: translateX(90%);
+}
+
+.video-progress-bar {
+  @extend .video-overlay__element;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: $progressBarHeightMinimized;
+  background-color: $progressBarBackgroundColor;
+}
+
+.video-progress-bar__inner {
+  background-color: $progressBarColor;
+  transition: all 250ms;
+}
+
+
+.video-overlay:hover {
+  /*
+    I wanted to add "&:focus" selector to improve keyboard controls.
+    However, this over-complicates hiding the button after a mouse-button click, since the overlay will remain visible
+  */
+
+  .video-overlay__element {
+    opacity: 1;
+  }
+
+  .video-playback-button, .video-duration-indicator {
+    transform: translateX(0);
+  }
+
+  .video-progress-bar {
+    height: $progressBarHeightFull;
+  }
+}
