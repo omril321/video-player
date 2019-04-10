@@ -5,6 +5,10 @@ $progressBarHeightFull: 8px;
 $progressBarColor: $redColor;
 $progressBarBackgroundColor: $lightGray;
 
+$videoOverlayElementHiddenOpacity: 0.4;
+$videoOverlayElementTransitionDuration: 150ms;
+
+
 $videoOverlaySlidingElementsOffsetBottom: 25px;
 $videoOverlaySlidingElementBorderRadius: 6px;
 $videoOverlaySlidingElementHeight: 44px;
@@ -28,8 +32,8 @@ $videoOverlaySlidingElementHeight: 44px;
 
 .video-overlay__element {
   position: absolute;
-  opacity: 0.4;
-  transition: all 150ms;
+  opacity: $videoOverlayElementHiddenOpacity;
+  transition: all $videoOverlayElementTransitionDuration;
 }
 
 @mixin videoOverlaySlidingElement {

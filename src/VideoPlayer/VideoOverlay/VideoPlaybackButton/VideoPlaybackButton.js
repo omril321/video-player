@@ -7,6 +7,7 @@ class VideoPlaybackButton extends Component {
     render() {
         const isVideoPlaying = this.props.isVideoPlaying;
         const SvgToShow = isVideoPlaying ? PauseSvg : PlaySvg;
+
         return (
             <button className="video-playback-button">
                 <SvgToShow className="video-playback-button__image"/>
