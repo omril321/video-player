@@ -18,7 +18,8 @@ class Social extends Component {
     componentDidUpdate(prevProps) {
         const videoTurnedLoaded = !prevProps.isVideoLoaded && this.props.isVideoLoaded; //not loaded before, but loaded now.
         if (videoTurnedLoaded) {
-            //for simplicity, the view counter will count "impressions", and not other complicated metric
+            // for simplicity, the view counter will count "impressions", and not other complicated metric
+            // also, viewing the same video over and over ("restart") will be counted as a single view. Refreshing the page however, considers as a new view
             this.socialVideoDAL.increaseViewCounter();
         }
     }
