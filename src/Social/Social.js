@@ -15,11 +15,18 @@ class Social extends Component {
         this.socialVideoDAL = new SocialVideoDAL(DEFAULT_VIDEO_ID);
     }
 
-    //TODO: consider extracting the logics toutside
+    componentDidUpdate(prevProps) {
+        const videoTurnedLoaded = !prevProps.isVideoLoaded && this.props.isVideoLoaded; //not loaded before, but loaded now.
+        if (videoTurnedLoaded) {
+            //for simplicity, the view counter will count "impressions", and not other complicated metric
+            this.socialVideoDAL.increaseViewCounter();
+        }
+    }
+
+    //TODO: consider extracting the logic outside
 
     componentDidMount() {
         this.socialVideoDAL.addViewsListener((views) => this.setState({views, isSocialLoaded: true}));
-        this.socialVideoDAL.increaseViewCounter();
     }
 
 

@@ -28,6 +28,7 @@ class VideoPlayerContainer extends Component {
 
     onVideoLoaded = ({duration}) => {
         this.setState({isVideoLoaded: true, duration: duration});
+        this.props.onVideoLoaded();
     };
 
     render() {
