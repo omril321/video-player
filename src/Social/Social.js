@@ -9,29 +9,49 @@ class Social extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoaded: false,
+            isSocialLoaded: false,
             views: 0,
         };
         this.socialVideoDAL = new SocialVideoDAL(DEFAULT_VIDEO_ID);
-
     }
 
     //TODO: consider extracting the logics toutside
-    onSocialLoaded = () => {
-        this.socialVideoDAL.addViewsListener((views) => this.setState({views, isLoaded: true}));
-    };
 
     componentDidMount() {
-        this.socialVideoDAL.increaseViewCounter()
-            .then(this.onSocialLoaded);
+        this.socialVideoDAL.addViewsListener((views) => this.setState({views, isSocialLoaded: true}));
+        this.socialVideoDAL.increaseViewCounter();
     }
 
+
+    //TODO: improve and extract to a different component
+    renderWhileLoading = () => (
+        <div>
+            Connecting social network...
+        </div>
+    );
+
+    socialContent = () => {
+
+        const viewsCounter = this.state.views;
+        const isSingular = viewsCounter === 1;
+
+        return (
+            <>
+                <span className="social__views-counter">{viewsCounter} view{isSingular ? '' : 's'}</span>
+                <div className="social__thumbs-container">
+                    <span role="img" aria-label="Thumbs up">👍</span>
+                    <span role="img" aria-label="Thumbs down">👎</span>
+                </div>
+            </>
+        );
+    };
+
     render() {
+        const toRender = this.state.isSocialLoaded ? this.socialContent() : this.renderWhileLoading();
+
         return (
             <div className="social">
-                SOCIAL GOES HERE!
-                loaded? {"" + this.state.isLoaded}
-                views: {this.state.views}
+                {toRender}
             </div>
         )
     }

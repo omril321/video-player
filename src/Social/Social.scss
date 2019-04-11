@@ -1,4 +1,19 @@
 .social {
   grid-area: social;
   margin-top: 20px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social__views-counter {
+  font-size: 18px;
+  font-family: Helvetica, serif;
+  font-weight: bolder;
+}
+
+.social__thumbs-container {
+  font-size: 24px;
 }
