@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SocialVideoDAL from "./Database/SocialVideoDAL";
-
+import "./Social.scss";
 
 const DEFAULT_VIDEO_ID = 'defaultVideo';
 
@@ -28,7 +28,7 @@ class Social extends Component {
 
     render() {
         return (
-            <div>
+            <div className="social">
                 SOCIAL GOES HERE!
                 loaded? {"" + this.state.isLoaded}
                 views: {this.state.views}

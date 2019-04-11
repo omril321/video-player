@@ -1,10 +1,9 @@
 @import "../colors.scss";
 
 .video-player-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 26px;
+  margin-top: 24px;
   position: relative;
+  grid-area: video;
 }
 
 .video {
