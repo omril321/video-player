@@ -5,8 +5,6 @@ import VideoStatsKeys from "./Database/VideoStatsKeys";
 import SocialEmotions from "./Emotions/SocialEmotions";
 import {formatAsNumberString} from "../Utils/formatters";
 
-const DEFAULT_VIDEO_ID = 'defaultVideo';
-
 class SocialWrapper extends Component {
 
     constructor(props) {
@@ -17,7 +15,7 @@ class SocialWrapper extends Component {
             thumbsUpCounter: 0,
             thumbsDownCounter: 0,
         };
-        this.socialVideoDAL = new SocialVideoDAL(DEFAULT_VIDEO_ID);
+        this.socialVideoDAL = new SocialVideoDAL(props.videoId);
     }
 
     componentDidUpdate(prevProps) {
@@ -32,7 +30,7 @@ class SocialWrapper extends Component {
     //TODO: consider extracting the logic outside
 
     componentDidMount() {
-        this.socialVideoDAL.addStatsListener((stats) => this.setState({
+        this.socialVideoDAL.addStatsListener(stats => this.setState({
             viewsCounter: stats[VideoStatsKeys.VIEWS] || 0,
             thumbsUpCounter: stats[VideoStatsKeys.THUMBS_UP] || 0,
             thumbsDownCounter: stats[VideoStatsKeys.THUMBS_DOWN] || 0,
@@ -46,11 +44,6 @@ class SocialWrapper extends Component {
     onThumbsDownClick = () => this.socialVideoDAL.increaseVideoMetric(VideoStatsKeys.THUMBS_DOWN);
 
     //TODO: improve and extract to a different component
-    renderWhileLoading = () => (
-        <div>
-            Connecting social network...
-        </div>
-    );
 
     socialContent = () => {
 
@@ -70,13 +63,11 @@ class SocialWrapper extends Component {
     };
 
     render() {
-        const toRender = this.state.isSocialLoaded ? this.socialContent() : this.renderWhileLoading();
+        const RenderWhileLoading = () => <div>Connecting social network...</div>;
 
-        return (
-            <div className="social-wrapper">
-                {toRender}
-            </div>
-        )
+        const toRender = this.state.isSocialLoaded ? this.socialContent() : <RenderWhileLoading/>;
+
+        return <div className="social-wrapper">{toRender}</div>;
     }
 }
 
