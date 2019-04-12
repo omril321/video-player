@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import SocialVideoDAL from "./Database/SocialVideoDAL";
-import "./Social.scss";
 import VideoStatsKeys from "./Database/VideoStatsKeys";
-import SocialEmotions from "./Emotions/SocialEmotions";
-import {formatAsNumberString} from "../Utils/formatters";
+import Social from "./Social";
 
 class SocialWrapper extends Component {
 
@@ -27,8 +25,6 @@ class SocialWrapper extends Component {
         }
     }
 
-    //TODO: consider extracting the logic outside
-
     componentDidMount() {
         this.socialVideoDAL.addStatsListener(stats => this.setState({
             viewsCounter: stats[VideoStatsKeys.VIEWS] || 0,
@@ -43,29 +39,16 @@ class SocialWrapper extends Component {
 
     onThumbsDownClick = () => this.socialVideoDAL.increaseVideoMetric(VideoStatsKeys.THUMBS_DOWN);
 
-    //TODO: improve and extract to a different component
-
-    socialContent = () => {
-
-        const {viewsCounter, thumbsUpCounter, thumbsDownCounter} = this.state;
-        const isSingular = viewsCounter === 1;
-
-        return (
-            <>
-                <span className="social__views-counter">{formatAsNumberString(viewsCounter)} view{isSingular ? '' : 's'}</span>
-                <SocialEmotions thumbsUpCounter={thumbsUpCounter}
-                                thumbsDownCounter={thumbsDownCounter}
-                                onThumbsUpClick={this.onThumbsUpClick}
-                                onThumbsDownClick={this.onThumbsDownClick}
-                />
-            </>
-        );
-    };
-
     render() {
-        const RenderWhileLoading = () => <div>Connecting social network...</div>;
+        const renderWhileLoading = <div>Connecting social network...</div>;
+        const social = <Social viewsCounter={this.state.viewsCounter}
+                               thumbsUpCounter={this.state.thumbsUpCounter}
+                               thumbsDownCounter={this.state.thumbsDownCounter}
+                               onThumbsUpClick={this.onThumbsUpClick}
+                               onThumbsDownClick={this.onThumbsDownClick}
+        />;
 
-        const toRender = this.state.isSocialLoaded ? this.socialContent() : <RenderWhileLoading/>;
+        const toRender = this.state.isSocialLoaded ? social : renderWhileLoading;
 
         return <div className="social-wrapper">{toRender}</div>;
     }
