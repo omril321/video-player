@@ -2,8 +2,14 @@ import React, {Component} from 'react';
 import SocialVideoDAL from "./Database/SocialVideoDAL";
 import VideoStatsKeys from "./Database/VideoStatsKeys";
 import Social from "./Social";
+import PropTypes from 'prop-types';
 
 class SocialWrapper extends Component {
+
+    static propTypes = {
+        videoId: PropTypes.string.isRequired,
+        isVideoLoaded: PropTypes.bool.isRequired,
+    };
 
     constructor(props) {
         super(props);

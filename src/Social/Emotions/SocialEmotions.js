@@ -2,8 +2,16 @@ import React, {Component} from 'react';
 import SocialEmotion from "./SocialEmotion";
 import "./SocialEmotions.scss";
 import SocialEmotionsBar from "./EmotionsBar/SocialEmotionsBar";
+import PropTypes from "prop-types";
 
 class SocialEmotions extends Component {
+
+    static propTypes = {
+        thumbsUpCounter: PropTypes.number.isRequired,
+        thumbsDownCounter: PropTypes.number.isRequired,
+        onThumbsUpClick: PropTypes.func.isRequired,
+        onThumbsDownClick: PropTypes.func.isRequired
+    };
 
     static socialButtonContent = (emoji, label) => <span role="img" aria-label={label}>{emoji}</span>;
 

@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
 class VideoProgressBar extends Component {
+
+    static propTypes = {
+        currentTime: PropTypes.number.isRequired,
+        duration: PropTypes.number.isRequired
+    };
 
     getFractionPlayed = () => {
         const {currentTime, duration} = {...this.props};

@@ -2,10 +2,15 @@ import React, {Component} from 'react';
 import './VideoPlayerContainer.scss';
 import Video from "./Video";
 import VideoOverlay from "./VideoOverlay/VideoOverlay";
+import PropTypes from "prop-types";
 
 const USE_VIDEO_AUTOPLAY = true;
 
 class VideoPlayerContainer extends Component {
+
+    static propTypes = {
+        onVideoLoaded: PropTypes.func.isRequired,
+    };
 
     constructor(props) {
         super(props);

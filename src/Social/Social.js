@@ -2,6 +2,7 @@ import React from "react";
 import {formatAsNumberString} from "../Utils/formatters";
 import "./Social.scss";
 import SocialEmotions from "./Emotions/SocialEmotions";
+import PropTypes from "prop-types";
 
 const Social = ({
                     viewsCounter,
@@ -23,6 +24,14 @@ const Social = ({
             />
         </div>
     )
+};
+
+Social.propTypes = {
+    viewsCounter: PropTypes.number.isRequired,
+    thumbsUpCounter: PropTypes.number.isRequired,
+    thumbsDownCounter: PropTypes.number.isRequired,
+    onThumbsUpClick: PropTypes.func.isRequired,
+    onThumbsDownClick: PropTypes.func.isRequired
 };
 
 export default Social;

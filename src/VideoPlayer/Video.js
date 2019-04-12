@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
 class Video extends Component {
+
+    static propTypes = {
+        isVideoPlaying: PropTypes.bool.isRequired,
+        onVideoPlaybackUpdate: PropTypes.func.isRequired,
+        onVideoLoaded: PropTypes.func.isRequired,
+        onVideoEnded: PropTypes.func.isRequired,
+    };
 
     constructor(props) {
         super(props);
