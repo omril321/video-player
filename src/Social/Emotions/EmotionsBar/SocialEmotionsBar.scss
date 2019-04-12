@@ -1,0 +1,25 @@
+$socialEmotionsBarHeight: 5px;
+$socialEmotionsBarPositiveColor: #a4d3ff;
+$socialEmotionsBarNegativeColor: #ffd2d8;
+
+.social-emotions-bar {
+  display: flex;
+  height: $socialEmotionsBarHeight;
+  border-radius: $socialEmotionsBarHeight;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+@mixin socialEmotionsBarPart($color) {
+  display: flex;
+  background-color: $color;
+  transition: all 1s;
+}
+
+.social-emotions-bar__positive {
+  @include socialEmotionsBarPart($socialEmotionsBarPositiveColor);
+}
+
+.social-emotions-bar__negative {
+  @include socialEmotionsBarPart($socialEmotionsBarNegativeColor);
+}

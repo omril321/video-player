@@ -56,7 +56,6 @@ class Social extends Component {
         const {viewsCounter, thumbsUpCounter, thumbsDownCounter} = this.state;
         const isSingular = viewsCounter === 1;
 
-        //TODO: extract thumbs up / down buttons to a smaller component
         return (
             <>
                 <span className="social__views-counter">{viewsCounter} view{isSingular ? '' : 's'}</span>
@@ -65,20 +64,6 @@ class Social extends Component {
                                 onThumbsUpClick={this.onThumbsUpClick}
                                 onThumbsDownClick={this.onThumbsDownClick}
                 />
-                {/*<div className="social__thumbs-container">*/}
-                    {/*<div className="social__thumbs-details">*/}
-                        {/*<button className="social__thumbs-icon" onClick={this.onThumbsUpClick}>*/}
-                            {/*<div role="img" aria-label="Thumbs up">👍</div>*/}
-                        {/*</button>*/}
-                        {/*<div className="social__thumbs-value-text">{thumbsUpCounter}</div>*/}
-                    {/*</div>*/}
-                    {/*<div className="social__thumbs-details">*/}
-                        {/*<button className="social__thumbs-icon" onClick={this.onThumbsDownClick}>*/}
-                            {/*<div role="img" aria-label="Thumbs down" className="social__thumbs-icon-thumbs-down">👎</div>*/}
-                        {/*</button>*/}
-                        {/*<div className="social__thumbs-value-text">{thumbsDownCounter}</div>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
             </>
         );
     };

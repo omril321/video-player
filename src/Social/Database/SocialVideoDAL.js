@@ -9,7 +9,13 @@ class SocialVideoDAL {
     }
 
     addStatsListener = (callback) => {
-        this._statsReference.on('value', (newVal) => callback(newVal.val()));
+        this._statsReference.on('value', (newVal) => {
+            const val = newVal.val();
+            //value could be null, if no metric was set yet for this video
+            if (val) {
+                callback(val);
+            }
+        });
     };
 
     increaseVideoMetric = (metricKey) => {
