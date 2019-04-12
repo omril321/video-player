@@ -27,7 +27,7 @@ class Social extends Component {
     //TODO: consider extracting the logic outside
 
     componentDidMount() {
-        this.socialVideoDAL.addViewsListener((views) => this.setState({views, isSocialLoaded: true}));
+        this.socialVideoDAL.addStatsListener((stats) => this.setState({views: stats.viewsCounter, isSocialLoaded: true}));
     }
 
 
