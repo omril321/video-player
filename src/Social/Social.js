@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SocialVideoDAL from "./Database/SocialVideoDAL";
 import "./Social.scss";
 import VideoStatsKeys from "./Database/VideoStatsKeys";
+import SocialEmotions from "./Emotions/SocialEmotions";
 
 const DEFAULT_VIDEO_ID = 'defaultVideo';
 
@@ -59,20 +60,25 @@ class Social extends Component {
         return (
             <>
                 <span className="social__views-counter">{viewsCounter} view{isSingular ? '' : 's'}</span>
-                <div className="social__thumbs-container">
-                    <div className="social__thumbs-details">
-                        <button className="social__thumbs-icon" onClick={this.onThumbsUpClick}>
-                            <div role="img" aria-label="Thumbs up">👍</div>
-                        </button>
-                        <div className="social__thumbs-value-text">{thumbsUpCounter}</div>
-                    </div>
-                    <div className="social__thumbs-details">
-                        <button className="social__thumbs-icon" onClick={this.onThumbsDownClick}>
-                            <div role="img" aria-label="Thumbs down" className="social__thumbs-icon-thumbs-down">👎</div>
-                        </button>
-                        <div className="social__thumbs-value-text">{thumbsDownCounter}</div>
-                    </div>
-                </div>
+                <SocialEmotions thumbsUpCounter={thumbsUpCounter}
+                                thumbsDownCounter={thumbsDownCounter}
+                                onThumbsUpClick={this.onThumbsUpClick}
+                                onThumbsDownClick={this.onThumbsDownClick}
+                />
+                {/*<div className="social__thumbs-container">*/}
+                    {/*<div className="social__thumbs-details">*/}
+                        {/*<button className="social__thumbs-icon" onClick={this.onThumbsUpClick}>*/}
+                            {/*<div role="img" aria-label="Thumbs up">👍</div>*/}
+                        {/*</button>*/}
+                        {/*<div className="social__thumbs-value-text">{thumbsUpCounter}</div>*/}
+                    {/*</div>*/}
+                    {/*<div className="social__thumbs-details">*/}
+                        {/*<button className="social__thumbs-icon" onClick={this.onThumbsDownClick}>*/}
+                            {/*<div role="img" aria-label="Thumbs down" className="social__thumbs-icon-thumbs-down">👎</div>*/}
+                        {/*</button>*/}
+                        {/*<div className="social__thumbs-value-text">{thumbsDownCounter}</div>*/}
+                    {/*</div>*/}
+                {/*</div>*/}
             </>
         );
     };

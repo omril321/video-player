@@ -1,0 +1,26 @@
+@import "../../baseStyle";
+
+.social-emotions {
+  display: flex;
+}
+
+.social-emotion {
+  display: flex;
+  align-items: center;
+
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+}
+
+.social-emotion__value-text {
+  @include appFont;
+  font-size: $fontSizeSmall;
+}
+
+.social-emotion__button {
+  background-color: transparent;
+  border: 0;
+  font-size: $fontSizeHuge;
+  cursor: pointer;
+}

@@ -15,32 +15,3 @@
   font-family: Helvetica, serif;
   font-weight: bolder;
 }
-
-.social__thumbs-container {
-  display: flex;
-}
-
-.social__thumbs-details {
-  display: flex;
-  align-items: center;
-  &:last-child {
-    margin-left: 20px;
-  }
-}
-
-.social__thumbs-value-text {
-  @include appFont;
-  font-size: $fontSizeSmall;
-}
-
-.social__thumbs-icon {
-  background-color: transparent;
-  border: 0;
-  font-size: $fontSizeHuge;
-  cursor: pointer;
-}
-
-.social__thumbs-icon-thumbs-down{
-  //this makes the thumbs up and thumbs down emojis look balanced
-  margin-bottom: -14px;
-}
