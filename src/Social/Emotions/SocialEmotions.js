@@ -9,6 +9,10 @@ class SocialEmotions extends Component {
 
     render() {
         const {thumbsUpCounter, thumbsDownCounter} = {...this.props};
+        /*
+        * NOTE: for simplicity, I've allowed pressing the thumbs up / down buttons without limitations
+        * it also makes it easier to test the behaviour.
+        */
         return (
             <div className="social-emotions">
                 <div className="social-emotions__container">
