@@ -7,7 +7,7 @@ import {formatAsNumberString} from "../Utils/formatters";
 
 const DEFAULT_VIDEO_ID = 'defaultVideo';
 
-class Social extends Component {
+class SocialWrapper extends Component {
 
     constructor(props) {
         super(props);
@@ -33,9 +33,9 @@ class Social extends Component {
 
     componentDidMount() {
         this.socialVideoDAL.addStatsListener((stats) => this.setState({
-            viewsCounter: stats[VideoStatsKeys.VIEWS],
-            thumbsUpCounter: stats[VideoStatsKeys.THUMBS_UP],
-            thumbsDownCounter: stats[VideoStatsKeys.THUMBS_DOWN],
+            viewsCounter: stats[VideoStatsKeys.VIEWS] || 0,
+            thumbsUpCounter: stats[VideoStatsKeys.THUMBS_UP] || 0,
+            thumbsDownCounter: stats[VideoStatsKeys.THUMBS_DOWN] || 0,
             isSocialLoaded: true
         }));
     }
@@ -73,11 +73,11 @@ class Social extends Component {
         const toRender = this.state.isSocialLoaded ? this.socialContent() : this.renderWhileLoading();
 
         return (
-            <div className="social">
+            <div className="social-wrapper">
                 {toRender}
             </div>
         )
     }
 }
 
-export default Social;
+export default SocialWrapper;

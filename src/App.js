@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import VideoPlayerContainer from "./VideoPlayer/VideoPlayerContainer";
-import Social from "./Social/Social";
+import SocialWrapper from "./Social/SocialWrapper";
 
 class App extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class App extends Component {
         return (
             <div className="app-container">
                 <VideoPlayerContainer onVideoLoaded={this.onVideoLoaded}/>
-                <Social isVideoLoaded={this.state.isVideoLoaded}/>
+                <SocialWrapper isVideoLoaded={this.state.isVideoLoaded}/>
             </div>
         );
     }
