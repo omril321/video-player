@@ -60,14 +60,18 @@ class Social extends Component {
             <>
                 <span className="social__views-counter">{viewsCounter} view{isSingular ? '' : 's'}</span>
                 <div className="social__thumbs-container">
-                    <span role="img" aria-label="Thumbs up" onClick={this.onThumbsUpClick}>
-                        <span>{thumbsUpCounter}</span>
-                        👍
-                    </span>
-                    <span role="img" aria-label="Thumbs down" onClick={this.onThumbsDownClick}>
-                        <span>{thumbsDownCounter}</span>
-                        👎
-                    </span>
+                    <div className="social__thumbs-details">
+                        <button className="social__thumbs-icon" onClick={this.onThumbsUpClick}>
+                            <div role="img" aria-label="Thumbs up">👍</div>
+                        </button>
+                        <div className="social__thumbs-value-text">{thumbsUpCounter}</div>
+                    </div>
+                    <div className="social__thumbs-details">
+                        <button className="social__thumbs-icon" onClick={this.onThumbsDownClick}>
+                            <div role="img" aria-label="Thumbs down" className="social__thumbs-icon-thumbs-down">👎</div>
+                        </button>
+                        <div className="social__thumbs-value-text">{thumbsDownCounter}</div>
+                    </div>
                 </div>
             </>
         );

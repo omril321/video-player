@@ -1,0 +1,11 @@
+$lightGray: #EEEEEE;
+$darkGray: #222222;
+$redColor: red;
+
+$fontSizeSmall: 1.1rem;
+$fontSizeNormal: 1.2rem;
+$fontSizeHuge: 1.6rem;
+
+@mixin appFont {
+  font-family: Helvetica, serif;
+}

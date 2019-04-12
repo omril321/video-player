@@ -1,4 +1,4 @@
-@import "../../colors";
+@import "../../baseStyle";
 
 $progressBarHeightMinimized: 2px;
 $progressBarHeightFull: 8px;
@@ -63,12 +63,13 @@ $videoOverlaySlidingElementHeight: 44px;
 
 .video-duration-indicator {
   @include videoOverlaySlidingElement;
+  @include appFont;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   right: 0;
   color: $lightGray;
-  font-size: 1rem;
+  font-size: $fontSizeSmall;
   padding-left: 20px;
   border-bottom-left-radius: $videoOverlaySlidingElementBorderRadius;
   border-top-left-radius: $videoOverlaySlidingElementBorderRadius;
