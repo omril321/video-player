@@ -18,13 +18,11 @@ class VideoPlayerContainer extends Component {
     }
 
 
-    onPlaybackToggle = () => {
-        this.setState((state) => ({isVideoPlaying: !state.isVideoPlaying}));
-    };
+    onPlaybackToggle = () => this.setState((state) => ({isVideoPlaying: !state.isVideoPlaying}));
 
-    onVideoPlaybackUpdate = ({currentTime}) => {
-        this.setState({currentTime});
-    };
+    onVideoPlaybackUpdate = ({currentTime}) => this.setState({currentTime});
+
+    onVideoEnded = () => this.setState({isVideoPlaying: false});
 
     onVideoLoaded = ({duration}) => {
         this.setState({isVideoLoaded: true, duration: duration});
@@ -37,7 +35,9 @@ class VideoPlayerContainer extends Component {
             <div className="video-player-container">
                 <Video isVideoPlaying={isVideoPlaying}
                        onVideoPlaybackUpdate={this.onVideoPlaybackUpdate}
-                       onVideoLoaded={this.onVideoLoaded}/>
+                       onVideoLoaded={this.onVideoLoaded}
+                       onVideoEnded={this.onVideoEnded}
+                />
 
                 <VideoOverlay isVideoPlaying={isVideoPlaying}
                               isVideoLoaded={isVideoLoaded}

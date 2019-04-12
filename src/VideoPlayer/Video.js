@@ -35,7 +35,11 @@ class Video extends Component {
     render() {
         return (
             //TODO: remove the muted attribute
-            <video className="video" ref={this.videoElementRef} muted onTimeUpdate={this.onVideoPlaybackUpdate} onLoadedData={this.onLoadedData}>
+            <video className="video" ref={this.videoElementRef}
+                   muted
+                   onTimeUpdate={this.onVideoPlaybackUpdate}
+                   onLoadedData={this.onLoadedData}
+                   onEnded={this.props.onVideoEnded}>
                 <source src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" type="video/mp4"/>
                 <source src="http://clips.vorwaerts-gmbh.de/VfE.webm" type="video/webm"/>
                 <source src="http://clips.vorwaerts-gmbh.de/VfE.ogv" type="video/ogg"/>
