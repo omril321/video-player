@@ -14,16 +14,13 @@
 .social-emotion {
   display: flex;
   align-items: center;
-
-  &:not(:first-child) {
-    margin-left: 20px;
-  }
 }
 
 .social-emotion__value-text {
   @include appFont;
   font-size: $fontSizeSmall;
   margin-left: 8px;
+  width: 4rem; //I don't think I'll have more than ~99,999 up / down votes. For scaling beyond that, I would use order-of-magnitudes (e.g. 2.3M)
 }
 
 .social-emotion__button {

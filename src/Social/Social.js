@@ -3,6 +3,7 @@ import SocialVideoDAL from "./Database/SocialVideoDAL";
 import "./Social.scss";
 import VideoStatsKeys from "./Database/VideoStatsKeys";
 import SocialEmotions from "./Emotions/SocialEmotions";
+import {formatAsNumberString} from "../Utils/formatters";
 
 const DEFAULT_VIDEO_ID = 'defaultVideo';
 
@@ -58,7 +59,7 @@ class Social extends Component {
 
         return (
             <>
-                <span className="social__views-counter">{viewsCounter} view{isSingular ? '' : 's'}</span>
+                <span className="social__views-counter">{formatAsNumberString(viewsCounter)} view{isSingular ? '' : 's'}</span>
                 <SocialEmotions thumbsUpCounter={thumbsUpCounter}
                                 thumbsDownCounter={thumbsDownCounter}
                                 onThumbsUpClick={this.onThumbsUpClick}

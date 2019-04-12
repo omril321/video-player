@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {getTimeAsText} from "./VideoDurationIndicatorService";
+import {formatTimeAsText} from "../../../Utils/formatters";
 
 class VideoDurationIndicator extends Component {
     render() {
@@ -7,7 +7,7 @@ class VideoDurationIndicator extends Component {
 
         return (
             <div className="video-duration-indicator">
-                {getTimeAsText(currentTime)} / {getTimeAsText(duration)}
+                {formatTimeAsText(currentTime)} / {formatTimeAsText(duration)}
             </div>
         )
     }
