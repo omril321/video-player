@@ -27,5 +27,6 @@ VideoOverlay.propTypes = {
     currentTime: PropTypes.number.isRequired,
     duration: PropTypes.number.isRequired,
     onPlaybackToggle: PropTypes.func.isRequired,
-}
+};
+
 export default VideoOverlay;

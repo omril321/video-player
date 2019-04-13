@@ -10,6 +10,10 @@ class VideoProgressBar extends Component {
 
     getFractionPlayed = () => {
         const {currentTime, duration} = {...this.props};
+
+        if(!currentTime || !duration) {
+            return 0;
+        }
         return currentTime / duration;
     };
 
