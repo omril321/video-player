@@ -12,4 +12,6 @@ const config = {
 
 firebase.initializeApp(config);
 
-export default firebase.database();
+const getDatabaseRef = (path) => firebase.database().ref(path);
+
+export {getDatabaseRef};

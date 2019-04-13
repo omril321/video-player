@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/jest": "^23.3.14",
     "firebase": "^5.9.3",
+    "jest": "^23.6.0",
     "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8",
-    "prop-types": "^15.7.2"
+    "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",

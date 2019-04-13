@@ -1,11 +1,11 @@
-import FirebaseDatabaseWrapper from "./FirebaseDatabaseWrapper";
+import {getDatabaseRef} from "./FirebaseDatabaseWrapper";
 import VideoStatsKeys from "./VideoStatsKeys";
 
 class SocialVideoDAL {
 
 
     constructor(videoId) {
-        this._statsReference = FirebaseDatabaseWrapper.ref(`videos/${videoId}/`);
+        this._statsReference = getDatabaseRef(`videos/${videoId}/`);
     }
 
     addStatsListener = (callback) => {
