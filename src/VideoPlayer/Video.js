@@ -42,9 +42,7 @@ class Video extends Component {
 
     render() {
         return (
-            //TODO: remove the muted attribute
             <video className="video" ref={this.videoElementRef}
-                   muted
                    onTimeUpdate={this.onVideoPlaybackUpdate}
                    onLoadedData={this.onLoadedData}
                    onEnded={this.props.onVideoEnded}>
