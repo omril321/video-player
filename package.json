@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/enzyme": "^3.9.1",
     "@types/jest": "^23.3.14",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
     "firebase": "^5.9.3",
     "jest": "^23.6.0",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
+    "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8"
   },
